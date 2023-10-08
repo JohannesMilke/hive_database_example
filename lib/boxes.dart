@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:hive_database_example/model/transaction.dart';
+import '../model/transaction.dart';
 
 class Boxes {
   static Box<Transaction> getTransactions() =>

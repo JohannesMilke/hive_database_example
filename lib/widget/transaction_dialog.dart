@@ -13,7 +13,7 @@ class TransactionDialog extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _TransactionDialogState createState() => _TransactionDialogState();
+  State<TransactionDialog> createState() => _TransactionDialogState();
 }
 
 class _TransactionDialogState extends State<TransactionDialog> {
@@ -57,11 +57,11 @@ class _TransactionDialogState extends State<TransactionDialog> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               buildName(),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               buildAmount(),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               buildRadioButtons(),
             ],
           ),
@@ -76,7 +76,7 @@ class _TransactionDialogState extends State<TransactionDialog> {
 
   Widget buildName() => TextFormField(
         controller: nameController,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: OutlineInputBorder(),
           hintText: 'Enter Name',
         ),
@@ -85,7 +85,7 @@ class _TransactionDialogState extends State<TransactionDialog> {
       );
 
   Widget buildAmount() => TextFormField(
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: OutlineInputBorder(),
           hintText: 'Enter Amount',
         ),
@@ -99,13 +99,13 @@ class _TransactionDialogState extends State<TransactionDialog> {
   Widget buildRadioButtons() => Column(
         children: [
           RadioListTile<bool>(
-            title: Text('Expense'),
+            title: const Text('Expense'),
             value: true,
             groupValue: isExpense,
             onChanged: (value) => setState(() => isExpense = value!),
           ),
           RadioListTile<bool>(
-            title: Text('Income'),
+            title: const Text('Income'),
             value: false,
             groupValue: isExpense,
             onChanged: (value) => setState(() => isExpense = value!),
@@ -114,7 +114,7 @@ class _TransactionDialogState extends State<TransactionDialog> {
       );
 
   Widget buildCancelButton(BuildContext context) => TextButton(
-        child: Text('Cancel'),
+        child: const Text('Cancel'),
         onPressed: () => Navigator.of(context).pop(),
       );
 

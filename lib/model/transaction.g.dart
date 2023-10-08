@@ -21,7 +21,7 @@ class TransactionAdapter extends TypeAdapter<Transaction> {
 
   @override
   void write(BinaryWriter writer, Transaction obj) {
-    writer..writeByte(0);
+    writer.writeByte(0);
   }
 
   @override
