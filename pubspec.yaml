@@ -1,29 +1,28 @@
 name: hive_database_example
+description: A new Flutter project.
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=3.1.2 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.2
-
   # hive database
-  hive: ^2.0.3
-  hive_flutter: ^1.0.0
-
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
   # format dates
-  intl: ^0.17.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   # hive database generators
-  build_runner: ^1.12.2
-  hive_generator: ^1.0.1
+  build_runner: ^2.4.6
+  hive_generator: ^2.0.1
+  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive_database_example/boxes.dart';
-import 'package:hive_database_example/model/transaction.dart';
-import 'package:hive_database_example/widget/transaction_dialog.dart';
 import 'package:intl/intl.dart';
+import '../boxes.dart';
+import '../model/transaction.dart';
+import '../widget/transaction_dialog.dart';
 
 class TransactionPage extends StatefulWidget {
+  const TransactionPage({super.key});
+
   @override
-  _TransactionPageState createState() => _TransactionPageState();
+  State<TransactionPage> createState() => _TransactionPageState();
 }
 
 class _TransactionPageState extends State<TransactionPage> {
@@ -22,7 +23,7 @@ class _TransactionPageState extends State<TransactionPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Hive Expense Tracker'),
+          title: const Text('Hive Expense Tracker'),
           centerTitle: true,
         ),
         body: ValueListenableBuilder<Box<Transaction>>(
@@ -34,7 +35,7 @@ class _TransactionPageState extends State<TransactionPage> {
           },
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           onPressed: () => showDialog(
             context: context,
             builder: (context) => TransactionDialog(
@@ -46,7 +47,7 @@ class _TransactionPageState extends State<TransactionPage> {
 
   Widget buildContent(List<Transaction> transactions) {
     if (transactions.isEmpty) {
-      return Center(
+      return const Center(
         child: Text(
           'No expenses yet!',
           style: TextStyle(fontSize: 24),
@@ -64,7 +65,7 @@ class _TransactionPageState extends State<TransactionPage> {
 
       return Column(
         children: [
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Text(
             'Net Expense: $newExpenseString',
             style: TextStyle(
@@ -73,10 +74,10 @@ class _TransactionPageState extends State<TransactionPage> {
               color: color,
             ),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           Expanded(
             child: ListView.builder(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               itemCount: transactions.length,
               itemBuilder: (BuildContext context, int index) {
                 final transaction = transactions[index];
@@ -96,16 +97,16 @@ class _TransactionPageState extends State<TransactionPage> {
   ) {
     final color = transaction.isExpense ? Colors.red : Colors.green;
     final date = DateFormat.yMMMd().format(transaction.createdDate);
-    final amount = '\$' + transaction.amount.toStringAsFixed(2);
+    final amount = '\$${transaction.amount.toStringAsFixed(2)}';
 
     return Card(
       color: Colors.white,
       child: ExpansionTile(
-        tilePadding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+        tilePadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
         title: Text(
           transaction.name,
           maxLines: 2,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         subtitle: Text(date),
         trailing: Text(
@@ -124,8 +125,8 @@ class _TransactionPageState extends State<TransactionPage> {
         children: [
           Expanded(
             child: TextButton.icon(
-              label: Text('Edit'),
-              icon: Icon(Icons.edit),
+              label: const Text('Edit'),
+              icon: const Icon(Icons.edit),
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => TransactionDialog(
@@ -139,8 +140,8 @@ class _TransactionPageState extends State<TransactionPage> {
           ),
           Expanded(
             child: TextButton.icon(
-              label: Text('Delete'),
-              icon: Icon(Icons.delete),
+              label: const Text('Delete'),
+              icon: const Icon(Icons.delete),
               onPressed: () => deleteTransaction(transaction),
             ),
           )
